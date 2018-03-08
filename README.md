@@ -1,10 +1,10 @@
-# Vno - Jekyll
+# FJlijinyi
 
-[Vno Jekyll](https://github.com/onevcat/vno-jekyll) is a theme for [Jekyll](http://jekyllrb.com). It is a port of my Ghost theme [vno](https://github.com/onevcat/vno), which is originally developed from [Dale Anthony's Uno](https://github.com/daleanthony/uno).
+[FJlijinyi](https://github.com/FJLiJinYi/FJLiJinYi.github.io) is a theme for [lijinyi](https://github.com/FJLiJinYi). 
 
 ## Live Demo
 
-See [Vno - Jekyll](http://vno.onevcat.com) site and [my blog](http://onevcat.com).
+See [素衣青果](http://www.suyiqingguo.xyz) site and [my blog](http://www.suyiqingguo.xyz).
 
 You can also find some instruction as well as other sites using Vno theme in [this page](http://vno.onevcat.com/2016/02/hello-world-vno/).
 
