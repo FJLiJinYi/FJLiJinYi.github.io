@@ -2,10 +2,10 @@
 title: 素衣青果
 subtitle: A blog-orientation theme for FJlijinyi
 #welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">Download the theme</a>
-description: Vno Jekyll is a port of my Ghost theme vno.
+description: 一个真诚的程序猿.
 creator: <a href="http://onev.cat">@onevcat</a>
 
-url: "http://vno.onevcat.com"
+url: "http://www.suyiqingguo.xyz"
 
 permalink: /:year/:month/:title/
 
@@ -21,8 +21,8 @@ blog_button:
     description: Visit blog
 
 # Navigation buttons in the front page.
-nav:
-    - {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
+#nav:
+ #   - {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 
 # Pagination
@@ -37,11 +37,11 @@ comment:
     
 # Social
 social:
-    weibo: onevcat
-    github: onevcat
-    twitter: onevcat
-    gplus: 107108267983477358170
-    mail: onev@onevcat.com
+#    weibo: onevcat
+    github: FJlijinyi
+#   twitter: onevcat
+#   gplus: 107108267983477358170
+    mail: 630986605@qq.com
 
 # Google Analytics
 ga:
