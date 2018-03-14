@@ -1,0 +1,17 @@
+---
+layout: post
+title: android 正经的修改包名
+date: 2018-03-14 10:08:24.000000000 +09:00
+---
+
+在AS3.0的版本下我们可以这么修改包名
+进入 Androidmanifest.xml 文件，找到 package 名称，选中需要修改的部分。
+例如：
+
+{% highlight java %}
+com.android.test 
+{% endhighlight %}
+
+如果需要修改的test,那么我们就选中它，然后：右键 - > Refactor -> Rename -> 选择Rename package -> 输入想要修改的目标名称 -> 点击Refactor ->继续点击左下方的Do Refactor 等待中，直到结束。
+
+最最主要，也是最重要的一步就是：修改你创建的app的gradle文件中的applicationId后面的包名，将新的包名修改一下,改成你的包名；
