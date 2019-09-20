@@ -1,0 +1,75 @@
+#工作踩坑记（持续更新）
+
+##Android开发之服务连接泄露异常
+ 写了个Android service，用来完成一些耗时的网络IO和远程设备连接。
+在Activity中，先用startService( )启动服务，然后调用bindService( )将Activity绑定到该服务上，最后执行程序。
+
+```
+错误log:
+.SampleCaptureActivity$1@de2dd47 that was originally bound here
+        at android.app.LoadedApk$ServiceDispatcher.<init>(LoadedApk.java:1077)
+        at android.app.LoadedApk.getServiceDispatcher(LoadedApk.java:971)
+        at android.app.ContextImpl.bindServiceCommon(ContextImpl.java:1792)
+        at android.app.ContextImpl.bindService(ContextImpl.java:1775)
+        at android.content.ContextWrapper.bindService(ContextWrapper.java:539)
+        at com.oliveapp.capture.sample.capture.SampleCaptureActivity.onCreate(SampleCaptureActivity.java:110)
+        at android.app.Activity.performCreate(Activity.java:6222)
+        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1106)
+        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2295)
+        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2407)
+        at android.app.ActivityThread.access$800(ActivityThread.java:151)
+        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1319)
+        at android.os.Handler.dispatchMessage(Handler.java:102)
+        at android.os.Looper.loop(Looper.java:135)
+        at android.app.ActivityThread.main(ActivityThread.java:5280)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at java.lang.reflect.Method.invoke(Method.java:372)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:963)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:758)
+```
+>看提示是ServiceConnection在使用的时候出现泄露了，原因是由于bind到service后，没有调用unbind进行释放。这个跟C/C++里的内存泄露应该是一类问题，资源使用完没有释放。
+解决办法：程序退出前调用unbindService( )释放服务连接
+
+##Bitmap 使用出错
+
+```
+错误log：
+java.lang.IllegalStateException Can't compress a recycled bitmap
+
+```
+>使用了已经被recycle 的了bitmap,注意使用bitmap是否已经使用完全。
+
+
+##RecyclerView 无法显示数据
+
+这是大部分粗心都会犯的错误。
+
+我出现的问题：
+如果初始化赋值了错误的参数，后面更新的数据需要重新将参数set进去，否则使用notifyDataSetChanged() 更新的方法无效；
+
+```
+public void setShowPointEntities(List<ShowPointEntity> showPointEntities) {
+    this.showPointEntities = showPointEntities;
+    notifyDataSetChanged();
+}
+```
+
+##app passed NULL surface 部分机型定义camera预览会黑屏
+
+目中用到了自定义camera，后发现部分机型几率性进入会黑屏，log中打出app passed NULL surface。
+
+>解决方法：再启动摄像头前加延迟，等待所有参数都加载成功。
+
+## Manifest merger failed withmultiple errors, see logs
+
+原因：
+AS的Gradle插件默认会启用Manifest Merger Tool，若Library项目中也定义了与主项目相同的属性（例如默认生成的android:icon和android:theme），则此时会合并失败，并报上面的错误。
+
+>解决办法：
+在manifest根标签上加入xmlns:tools="http://schemas.android.com/tools"，并在Manifest.xml的application标签下添加tools:replace="icon, label， theme"（多个属性用,隔开，视情况而定，最好照抄）。不能写成tools:replace="android:icon, android:label, android:theme"，这样不会报错，但也不能解决错误。
+gradlew processDebugManifest --stacktrace
+其中,processDebugManifest是log里面提到的,这个命令是会了获取更多的log信息。
+
+导致这个问题的原因有很多。最好通过gradlew processDebugManifest --stacktrace 去判断解决。不行就搬梯子去找gg。
+
+
