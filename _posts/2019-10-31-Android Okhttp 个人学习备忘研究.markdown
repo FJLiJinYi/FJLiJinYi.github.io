@@ -100,9 +100,8 @@ okHttpClient.newCall(request).enqueue(new Callback() {
 > OkHttp的拦截器链可谓是其整个框架的精髓，用户可传入的 interceptor 分为两类：
 ①一类是全局的 interceptor，该类 interceptor 在整个拦截器链中最早被调用，通过 OkHttpClient.Builder#addInterceptor(Interceptor) 传入；
 ②另外一类是非网页请求的 interceptor ，这类拦截器只会在非网页请求中被调用，并且是在组装完请求之后，真正发起网络请求前被调用，所有的 interceptor 被保存在 List<Interceptor> interceptors 集合中，按照添加顺序来逐个调用，具体可参考 RealCall#getResponseWithInterceptorChain() 方法。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191031155425327.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM5MDcxNDg=,size_16,color_FFFFFF,t_70)
-新版的okhttp已经使用kotlin重写了。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191031155656183.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM5MDcxNDg=,size_16,color_FFFFFF,t_70)
+
+https://blog.csdn.net/u013907148/article/details/102837605
 
 那么就这个样了，加油~
 
