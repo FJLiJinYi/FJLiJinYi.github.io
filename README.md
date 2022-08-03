@@ -1,10 +1,10 @@
-# FJlijinyi
+# FJlijinyiCancel changes
 
 [FJlijinyi](https://github.com/FJLiJinYi/FJLiJinYi.github.io) is a theme for [lijinyi](https://github.com/FJLiJinYi). 
 
 ## Live Demo
 
-See [素衣青果](https://fjlijinyi.github.io) site and [my blog](https://fjlijinyi.github.io).
+See [墨尽书香](https://fjlijinyi.github.io) site and [my blog](https://fjlijinyi.github.io).
 
 You can also find some instruction as well as other sites using Vno theme in [this page](http://vno.onevcat.com/2016/02/hello-world-vno/).
 
